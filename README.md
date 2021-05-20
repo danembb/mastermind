@@ -50,3 +50,10 @@ Congratulations! You guessed the sequence 'GRRB' in 8 guesses over 4 minutes,
 
 Do you want to (p)lay again or (q)uit?
 If they enter 'p' or 'play' then restart the game. 'q' or 'quit' ends the game.
+
+
+Check-In Notes:
+
+* All gets.chomp should be in one file.
+* Re-DTR before weekend
+* Check-in with Megan on monday?

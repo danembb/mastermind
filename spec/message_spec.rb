@@ -29,5 +29,23 @@ RSpec.describe Message do
 
       expect(message.instructions).to eq(expected)
     end
+
+    it '#can display an error message when there are too many characters' do
+      message = Message.new
+
+      expect(message.too_long).to eq('Oh no! You used too many characters!')
+    end
+
+    it '#can display an error message when there are not enough characters' do
+      message = Message.new
+
+      expect(message.too_short).to eq('Oh no! You did not use enough characters!')
+    end
+
+    it '#can display an error message when an invalid character is used' do
+      message = Message.new
+
+      expect(message.invalid_character).to eq('Huh? That does not look like a valid character...')
+    end
   end
 end

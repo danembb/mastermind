@@ -20,6 +20,18 @@ class Message
     Green = 'g'
     Blue = 'b'
     Yellow = 'y'"
+#add a line about cheating.
+  end
 
+  def too_long
+    'Oh no! You used too many characters!'
+  end
+
+  def too_short
+    'Oh no! You did not use enough characters!'
+  end
+
+  def invalid_character
+    'Huh? That does not look like a valid character...'
   end
 end

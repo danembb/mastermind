@@ -1,6 +1,8 @@
 require './lib/game'
+require './lib/message'
 
 mastermind = Game.new
+message = Message.new
 
-puts 'Welcome to MASTERMIND'
-puts 'Would you like to (p)lay, read the (i)nstructions, or (q)uit?'
+puts message.welcome
+puts message.welcome_query

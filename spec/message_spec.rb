@@ -15,5 +15,11 @@ RSpec.describe Message do
 
       expect(message.welcome).to eq('Welcome to MASTERMIND')
     end
+
+    it '#can display a welcome query' do
+      message = Message.new
+
+      expect(message.welcome_query).to eq('Would you like to (p)lay, read the (i)nstructions, or (q)uit?')
+    end
   end
 end

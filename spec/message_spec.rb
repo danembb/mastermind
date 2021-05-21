@@ -47,5 +47,13 @@ RSpec.describe Message do
 
       expect(message.invalid_character).to eq('Huh? That does not look like a valid character...')
     end
+
+      #what is the proper syntax for conveying messages?
+    it '#can display play_flow_message' do
+      message = Message.new
+      expected = "I have generated a beginner sequence with four elements made up of: (r)ed,\n    (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.\n    What's your guess?"
+
+      expect(message.play_flow).to eq(expected)
+    end
   end
 end

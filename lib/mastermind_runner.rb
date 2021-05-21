@@ -9,6 +9,7 @@ puts mastermind.message.welcome
 puts mastermind.message.welcome_query
 mastermind.menu_flow(gets.chomp)
 
+
 # puts message.instructions
 # puts message.too_long
 # puts message.too_short

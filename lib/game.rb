@@ -1,10 +1,12 @@
 require './lib/message'
 
 class Game
-  attr_reader :message
+  attr_reader :message,
+              :sequence
 
   def initialize
-    @message = Message.new
+    @message  = Message.new
+    @sequence = Sequence.new
   end
 
   def menu_flow(input)
@@ -38,5 +40,38 @@ class Game
   #   return message.too_short
   # elsif gets.chomp != p || q || i || c || r || b || g || y
   #   return message.invalid_character
+
+  def game_flow(input)
+    # until self.guess_correct? == true do
+    until input == characters do
+      if input == "c" || input == "cheat"
+        puts @message.play_flow
+        self.game_flow(input = gets.chomp)
+      elsif input == "q" || input == "quit"
+        puts self.end_game
+      elsif input >= 5
+        puts @message.too_long
+      elsif input <= 3
+        puts @message.too_short
+        self.game_flow(input = gets.chomp)
+      elsif input.length == 4
+        turn.count += 1
+        guess_correct?
+      end
+      # elsif input.include != "q" || input.include != "i" || input.include != "r" || input.include != "b" || input.include != "g" || input.include != "y"
+      #   puts @message.invalid_character
+      #   puts @message.instructions
+    end
+  end
+
+  def guess_correct?
+    input == characters
+  end
+
+  def play(gets.chomp)
+    sequence.create
+    puts message.
+
+  end
 
 end

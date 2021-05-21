@@ -1,11 +1,14 @@
 require './lib/game'
 require './lib/message'
+require './lib/sequence'
 
 mastermind = Game.new
-message = Message.new
+message    = Message.new
+# sequence   = Sequence.new
 
 puts message.welcome
 puts message.welcome_query
+mastermind.menu_flow(gets.chomp)
 
 # puts message.instructions
 # puts message.too_long

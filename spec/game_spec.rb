@@ -10,12 +10,11 @@ RSpec.describe Game do
     end
   end
 
-  describe '#methods' do
-    it '#can display a welcome message' do
-      mastermind = Game.new
-      mastermind.game_start
-      
-      expect(mastermind.welcome).to be('Welcome to MASTERMIND Would you like to (p)lay, read the (i)nstructions, or (q)uit?')
-    end
-  end
+  # describe '#methods' do
+  #   it '#can begin' do
+  #     mastermind = Game.new
+  #
+  #     expect(mastermind.intiate).to eq()
+  #   end
+  # end
 end

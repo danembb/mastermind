@@ -1,8 +1,7 @@
+require './lib/message'
 class Game
-  attr_reader :welcome
 
   def initialize
-    @welcome = welcome
   end
 
   #def in_game_error_check
@@ -13,13 +12,15 @@ class Game
   # elsif gets.chomp != p || q || i || c || r || b || g || y
   #   return message.invalid_character
 
-  #def menu_flow
-  # if gets.chomp == p || play
-  #   game.initate
-  # elsif gets.chomp == i || instructions
-  #   return message.instructions
-  # elsif gets.chomp == q || quit
-  #   game.end_game
-  # elsif gets.chomp != q || i || c || r || b || g || y
-  #   return message.invalid_character
+  def menu_flow(input)
+    if input == 'p' || 'play'
+      return message.play_flow
+    elsif input == 'i' || 'instructions'
+      return message.instructions
+    elsif input == 'q' || 'quit'
+      return game.end_game
+    elsif input != 'q' || 'i' || 'c' || 'r' || 'b' || 'g' || 'y'
+      return message.invalid_character
+    end
+  end
 end

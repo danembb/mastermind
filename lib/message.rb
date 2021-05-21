@@ -19,7 +19,8 @@ class Message
     Red = 'r'
     Green = 'g'
     Blue = 'b'
-    Yellow = 'y'"
+    Yellow = 'y'
+    Enter (p)lay to play the game or (q)uit to quit!"
 #add a line about cheating.
   end
 

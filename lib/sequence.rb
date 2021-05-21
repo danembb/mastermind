@@ -6,7 +6,7 @@ class Sequence
   end
 
   def create
-    @colors = ['r', 'g', 'b', 'y']
+    @colors = ['r', 'r', 'r', 'r', 'g', 'g', 'g', 'g', 'b', 'b', 'b', 'b', 'y', 'y', 'y', 'y']
     # 4.times @characters << colors.sample
     @colors.sample(4).each do |color|
       @characters << color

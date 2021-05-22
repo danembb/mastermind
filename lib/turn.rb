@@ -21,17 +21,20 @@ class Turn
   end
 
   def has_won?
-    @guess == @characters
+    @guess == @supersecretcode
   end
 
   def compare_first_position
-    if @guess[0] == sequence.characters[0]
+    if @guess[0] == sequence.supersecretcode[0]
       true
       @correct_positions += 1
     else
       false
-      require 'pry'; binding.pry
     end
+  end
+
+  def length_long
+    @guess.length >= 5
   end
 
 end
@@ -43,7 +46,7 @@ end
   #   elsif input <= 3
   #     puts @message.too_short
   #     self.game_flow(input = gets.chomp)
-  #   elsif input.length == 4 && @characters
+  #   elsif input.length == 4 && @supersecretcode
   #     add_turn.message_try_again
   #   end
   #
@@ -57,9 +60,4 @@ end
   #   elsif input.length == 4
   #     true
   #   end
-  # end
-
-
-  # def length_long
-  #   game.user.length >= 5
   # end

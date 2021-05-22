@@ -8,9 +8,9 @@ mastermind = Game.new
 
 puts mastermind.message.welcome
 puts mastermind.message.welcome_query
-mastermind.menu_flow(gets.chomp)
+mastermind.menu_flow(gets.chomp.downcase)
 
-# mastermind.game_flow(gets.chomp)
+# mastermind.game_flow(gets.chomp.downcase)
 
 
 

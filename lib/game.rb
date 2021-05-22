@@ -15,17 +15,18 @@ class Game
     #why does '' give a warning, but "" doesnt?
     #why use self?
     if input == "p" || input == "play"
+      @sequence.create
       puts @message.play_flow
-      self.game_flow(input = gets.chomp)
+      self.game_flow(input = gets.chomp.downcase)
     elsif input == "i" || input == "instructions"
       puts @message.instructions
-      self.menu_flow(input = gets.chomp)
+      self.menu_flow(input = gets.chomp.downcase)
     elsif input == "q" || input == "quit"
       puts @message.goodbye
     elsif input != "q" || input != "i" || input != "r" || input != "b" || input != "g" || input != "y"
       puts @message.invalid_character
       puts @message.instructions
-      self.menu_flow(input = gets.chomp)
+      self.menu_flow(input = gets.chomp.downcase)
     end
     #Rock input: consider def .loop until valid? (not a boolean)
     # can we use a loop like:
@@ -46,13 +47,13 @@ class Game
 
   def game_flow(input)
     # until self.guess_correct? == true do
-    puts "this is game flow"
-    until input == sequence.characters do
-      if input == "c" || input == "cheat"
-        puts @message.cheater
-        self.game_flow(input = gets.chomp)
-      elsif input == "q" || input == "quit"
-        puts @message.goodbye
+    # until input == sequence.supersecretcode do
+    if input == "c" || input == "cheat"
+      puts @message.cheater
+      puts @sequence.display_cheat
+      self.game_flow(input = gets.chomp.downcase)
+    elsif input == "q" || input == "quit"
+      puts @message.goodbye
       # elsif input >= 5
       #   puts @message.too_long
       # elsif input <= 3
@@ -61,18 +62,16 @@ class Game
       # elsif input.length == 4
         # turn.count += 1
         # guess_correct?
-      end
+
       # elsif input.include != "q" || input.include != "i" || input.include != "r" || input.include != "b" || input.include != "g" || input.include != "y"
       #   puts @message.invalid_character
       #   puts @message.instructions
     end
   end
-
+end
 
   # def play(gets.chomp)
   #   sequence.create
   #   puts message.
   #
   # end
-
-end

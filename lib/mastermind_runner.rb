@@ -1,6 +1,7 @@
 require './lib/game'
 require './lib/message'
 require './lib/sequence'
+require './lib/turn'
 
 mastermind = Game.new
 # sequence   = Sequence.new
@@ -8,7 +9,6 @@ mastermind = Game.new
 puts mastermind.message.welcome
 puts mastermind.message.welcome_query
 mastermind.menu_flow(gets.chomp)
-
 
 # puts message.instructions
 # puts message.too_long

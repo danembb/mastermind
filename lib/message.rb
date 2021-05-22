@@ -1,6 +1,12 @@
+require './lib/sequence'
+require './lib/turn'
+
 class Message
+  attr_reader :sequence
 
   def initialize
+    @sequence = Sequence.new
+    @turn = Turn.new(['r','r', 'r', 'r'])
   end
 
   def welcome
@@ -48,5 +54,13 @@ class Message
 
   def cheater
     "Well, alright. Here's the super secret sequence:"
+  end
+
+  def you_won
+    "Congratulations you guessed the sequence #{sequence.supersecretcode} in #{turn.turn_number} turns over #{timeshit}"
+  end
+
+  def you_won_query
+    "Would you like to (p)lay again or (q)uit?"
   end
 end

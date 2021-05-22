@@ -32,27 +32,4 @@ class Turn
       false
     end
   end
-
 end
-
-  # def guess
-  #   if input >= 5
-  #     puts @message.too_long
-  #   elsif input <= 3
-  #     puts @message.too_short
-  #     self.game_flow(input = gets.chomp)
-  #   elsif input.length == 4 && @supersecretcode
-  #     add_turn.message_try_again
-  #   end
-  #
-  # end
-
-  # def valid_input(gets.chomp)
-  #   if input >= 5
-  #     puts @message.too_long
-  #   elsif input <= 3
-  #     puts @message.too_short
-  #   elsif input.length == 4
-  #     true
-  #   end
-  # end

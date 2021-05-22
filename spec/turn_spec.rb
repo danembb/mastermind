@@ -23,6 +23,10 @@ RSpec.describe Turn do
       turn.add_turn
 
       expect(turn.turn_number).to eq(1)
+      turn.add_turn
+      turn.add_turn
+      
+      expect(turn.turn_number).to eq(3)
     end
 
     it '#has not won' do
@@ -33,7 +37,7 @@ RSpec.describe Turn do
       expect(turn.has_won?).to eq(false)
     end
     #can we use a mock instance?
-    # @characters = ['r', 'r', 'r', 'r']
+    # @supersecretcode = ['r', 'r', 'r', 'r']
     it '#does not have the correct first position' do
       sequence = Sequence.new
       turn = Turn.new(['r','r', 'g', 'y'])

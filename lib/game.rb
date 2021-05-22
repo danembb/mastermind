@@ -1,5 +1,6 @@
 require './lib/message'
-
+require './lib/sequence'
+require './lib/turn'
 class Game
   attr_reader :message,
               :sequence,
@@ -8,6 +9,7 @@ class Game
   def initialize
     @message  = Message.new
     @sequence = Sequence.new
+    @turn = Turn.new(['r','r', 'r', 'r'])
     # @user     = gets.chomp
   end
 
@@ -61,21 +63,14 @@ class Game
     elsif input.length <= 3
       puts @message.too_short
       self.game_flow(input = gets.chomp.downcase)
-      #   self.game_flow(input = gets.chomp)
-      # elsif input.length == 4
-        # turn.count += 1
-        # guess_correct?
-
-      # elsif input.include != "q" || input.include != "i" || input.include != "r" || input.include != "b" || input.include != "g" || input.include != "y"
-      #   puts @message.invalid_character
-      #   puts @message.instructions
+    elsif input.length == 4
+      turn.add_turn
+      if input == @sequence.supersecretcode
+      #   message.you_won <-- contains turn.turns_taken & timestuff in an interpolation ((you took #{turns_taken} in #{timestuff}!
+      # elsif has any amount of correct_positions
+      #   message.partial_correct: "#{input} has #{correct_elements} with #{correct_positions} in the correct positions."
+      #   message.turn_count: "You've taken #{current_turn} turns."
     end
 
   end
 end
-
-  # def play(gets.chomp)
-  #   sequence.create
-  #   puts message.
-  #
-  # end

@@ -10,11 +10,4 @@ RSpec.describe Game do
     end
   end
 
-  # describe '#methods' do
-  #   it '#can begin' do
-  #     mastermind = Game.new
-  #
-  #     expect(mastermind.intiate).to eq()
-  #   end
-  # end
 end

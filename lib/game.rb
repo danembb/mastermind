@@ -16,6 +16,7 @@ class Game
     #why use self?
     if input == "p" || input == "play"
       puts @message.play_flow
+      self.game_flow(input = gets.chomp)
     elsif input == "i" || input == "instructions"
       puts @message.instructions
       self.menu_flow(input = gets.chomp)
@@ -45,12 +46,13 @@ class Game
 
   def game_flow(input)
     # until self.guess_correct? == true do
-    until input == characters do
+    puts "this is game flow"
+    until input == sequence.characters do
       if input == "c" || input == "cheat"
-        puts @message.play_flow
+        puts @message.cheater
         self.game_flow(input = gets.chomp)
       elsif input == "q" || input == "quit"
-        puts self.end_game
+        puts @message.goodbye
       # elsif input >= 5
       #   puts @message.too_long
       # elsif input <= 3

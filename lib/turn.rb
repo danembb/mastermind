@@ -33,12 +33,7 @@ class Turn
     end
   end
 
-  def length_long
-    @guess.length >= 5
-  end
-
 end
-
 
   # def guess
   #   if input >= 5

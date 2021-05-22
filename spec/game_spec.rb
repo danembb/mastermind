@@ -1,5 +1,5 @@
 require './lib/game'
-
+require './lib/turn'
 
 RSpec.describe Game do
   describe 'instantiation' do
@@ -9,5 +9,4 @@ RSpec.describe Game do
       expect(mastermind).to be_an_instance_of(Game)
     end
   end
-
 end

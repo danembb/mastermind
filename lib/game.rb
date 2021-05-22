@@ -48,16 +48,19 @@ class Game
   def game_flow(input)
     # until self.guess_correct? == true do
     # until input == sequence.supersecretcode do
+    #how can we create helper methods for each of these input.length..chomp.downcase)?
     if input == "c" || input == "cheat"
       puts @message.cheater
       puts @sequence.display_cheat
       self.game_flow(input = gets.chomp.downcase)
     elsif input == "q" || input == "quit"
       puts @message.goodbye
-      # elsif input >= 5
-      #   puts @message.too_long
-      # elsif input <= 3
-      #   puts @message.too_short
+    elsif input.length  >= 5
+      puts @message.too_long
+      self.game_flow(input = gets.chomp.downcase)
+    elsif input.length <= 3
+      puts @message.too_short
+      self.game_flow(input = gets.chomp.downcase)
       #   self.game_flow(input = gets.chomp)
       # elsif input.length == 4
         # turn.count += 1
@@ -67,6 +70,7 @@ class Game
       #   puts @message.invalid_character
       #   puts @message.instructions
     end
+
   end
 end
 

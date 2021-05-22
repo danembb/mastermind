@@ -42,10 +42,5 @@ RSpec.describe Turn do
       expect(turn.compare_first_position).to eq(false)
     end
 
-    it '#can tell if user input is too long' do
-      turn = Turn.new(['r','r', 'g', 'y'])
-
-      expect(turn.length_long).to eq(false)
-    end
   end
 end

@@ -20,7 +20,7 @@ class Game
       puts @message.instructions
       self.menu_flow(input = gets.chomp)
     elsif input == "q" || input == "quit"
-      puts self.end_game
+      puts @message.goodbye
     elsif input != "q" || input != "i" || input != "r" || input != "b" || input != "g" || input != "y"
       puts @message.invalid_character
       puts @message.instructions

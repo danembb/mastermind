@@ -55,5 +55,11 @@ RSpec.describe Message do
 
       expect(message.play_flow).to eq(expected)
     end
+
+    it '#can display a goodbye message when player quits' do
+      message = Message.new
+
+      expect(message.goodbye).to eq("Goodbye!")
+    end
   end
 end

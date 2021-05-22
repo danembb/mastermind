@@ -42,4 +42,7 @@ class Message
     What's your guess?"
   end
 
+  def goodbye
+    "Goodbye!"
+  end
 end

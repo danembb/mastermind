@@ -61,5 +61,11 @@ RSpec.describe Message do
 
       expect(message.goodbye).to eq("Goodbye!")
     end
+
+    it '#can display a message if the player wants to be a dirty cheater' do
+      message = Message.new
+
+      expect(message.cheater).to eq("Well, alright. Here's the super secret sequence:")
+    end
   end
 end

@@ -45,4 +45,8 @@ class Message
   def goodbye
     "Goodbye!"
   end
+
+  def cheater
+    "Well, alright. Here's the super secret sequence:"
+  end
 end

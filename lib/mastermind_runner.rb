@@ -1,6 +1,7 @@
 require './lib/game'
 require './lib/message'
 require './lib/sequence'
+require './lib/turn'
 
 mastermind = Game.new
 # sequence   = Sequence.new

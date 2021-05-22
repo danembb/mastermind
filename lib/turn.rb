@@ -25,10 +25,15 @@ class Turn
   end
 
   def compare_first_position
-    if @guess[0] == @characters[0]
+    if @guess[0] == sequence.characters[0]
+      true
       @correct_positions += 1
+    else
+      false
+      require 'pry'; binding.pry
     end
   end
+
 end
 
 

@@ -1,4 +1,5 @@
 class Stopwatch
+  attr_reader :start
 
   def initialize
     @start = Time.now

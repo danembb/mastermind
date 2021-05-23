@@ -19,7 +19,7 @@ RSpec.describe Stopwatch do
 
       expect(stopwatch.elapsed_minutes).to be_an_instance_of(Integer)
       expect(stopwatch.elapsed_minutes).to eq(0)
-      #should we include this test for clarity?
+      #Sat: should we include this test for clarity?
       # sleep(60)
 
       #expect(stopwatch.elapsed_minutes).to eq(1)

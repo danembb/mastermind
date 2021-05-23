@@ -1,15 +1,20 @@
 require './lib/message'
 require './lib/sequence'
 require './lib/turn'
+require './lib/stopwatch'
+
 class Game
   attr_reader :message,
               :sequence,
-              :user
+              :turn,
+              :stopwatch
+              # :user
 
   def initialize
     @message  = Message.new
     @sequence = Sequence.new
     @turn = Turn.new(['r','r', 'r', 'r'])
+    @stopwatch = Stopwatch.new
     # @user     = gets.chomp
   end
 
@@ -18,6 +23,8 @@ class Game
     #why use self?
     if input == "p" || input == "play"
       @sequence.create
+      #Sat: is this starting the timer here or is the timer starting when the game is initiated?
+      @stopwatch.start
       puts @message.play_flow
       self.game_flow(input = gets.chomp.downcase)
     elsif input == "i" || input == "instructions"
@@ -39,14 +46,6 @@ class Game
     # end
   end
 
-  #def in_game_error_check
-  # if gets.chomp.length >= 5
-  #   return message.too_long
-  # elsif gets.chomp.length <= 3
-  #   return message.too_short
-  # elsif gets.chomp != p || q || i || c || r || b || g || y
-  #   return message.invalid_character
-
   def game_flow(input)
     # until self.guess_correct? == true do
     # until input == sequence.supersecretcode do
@@ -63,14 +62,18 @@ class Game
     elsif input.length <= 3
       puts @message.too_short
       self.game_flow(input = gets.chomp.downcase)
+    #Sat: What is @sequence.supersecretcode here and why (when input correctly) isn't it congratulating?
     elsif input.length == 4
-      turn.add_turn
+      @turn.add_turn
+      puts "I am a banana"
       if input == @sequence.supersecretcode
-      #   message.you_won <-- contains turn.turns_taken & timestuff in an interpolation ((you took #{turns_taken} in #{timestuff}!
-      # elsif has any amount of correct_positions
-      #   message.partial_correct: "#{input} has #{correct_elements} with #{correct_positions} in the correct positions."
-      #   message.turn_count: "You've taken #{current_turn} turns."
+        #Should this message be here or can it be in the message class
+        #If in the message class, then is it ok to require multiple files from there?
+        puts "Congratulations you guessed the sequence #{@sequence.supersecretcode} in #{@turn.turn_number} turns over #{@stopwatch.elapsed_minutes} minutes, #{@stopwatch.elapsed_seconds} seconds."
+        # elsif has any amount of correct_positions
+        #   message.partial_correct: "#{input} has #{correct_elements} with #{correct_positions} in the correct positions."
+        #   puts "You've taken #{@turn.turn_number} turns."
+      end
     end
-
   end
 end

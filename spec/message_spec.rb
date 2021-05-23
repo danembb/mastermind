@@ -61,5 +61,17 @@ RSpec.describe Message do
 
       expect(message.goodbye).to eq("Goodbye!")
     end
+
+    it '#can display a message if the player wants to be a dirty cheater' do
+      message = Message.new
+
+      expect(message.cheater).to eq("Well, alright. Here's the super secret sequence:")
+    end
+
+    it '#can display a query message when the player has won' do
+      message = Message.new
+
+      expect(message.you_won_query).to eq("Would you like to (p)lay again or (q)uit?")
+    end
   end
 end

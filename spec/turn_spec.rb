@@ -8,22 +8,28 @@ RSpec.describe Turn do
      turn = Turn.new(['r','r', 'g', 'y'])
 
      expect(turn).to be_an_instance_of(Turn)
-   end
+    end
+  end
 
-   it 'count turns' do
+  describe '#methods' do
+    it '#count turns' do
       turn = Turn.new(['r','r', 'g', 'y'])
 
       expect(turn.turn_number).to eq(0)
-   end
+    end
 
-   it 'can add a turn' do
+    it '#can add a turn' do
       turn = Turn.new(['r','r', 'g', 'y'])
       turn.add_turn
 
       expect(turn.turn_number).to eq(1)
-   end
+      turn.add_turn
+      turn.add_turn
+      
+      expect(turn.turn_number).to eq(3)
+    end
 
-    it 'has not won' do
+    it '#has not won' do
       sequence = Sequence.new
       sequence.create
       turn = Turn.new(['r','r', 'g', 'y'])
@@ -31,12 +37,12 @@ RSpec.describe Turn do
       expect(turn.has_won?).to eq(false)
     end
     #can we use a mock instance?
-    # @characters = ['r', 'r', 'r', 'r']
-    it 'does not have the correct first position' do
+    # @supersecretcode = ['r', 'r', 'r', 'r']
+    it '#does not have the correct first position' do
       sequence = Sequence.new
       turn = Turn.new(['r','r', 'g', 'y'])
       sequence.create
-      
+
       expect(turn.compare_first_position).to eq(false)
     end
 

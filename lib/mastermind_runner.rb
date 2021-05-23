@@ -2,29 +2,16 @@ require './lib/game'
 require './lib/message'
 require './lib/sequence'
 require './lib/turn'
+require './lib/stopwatch'
 
 mastermind = Game.new
-# sequence   = Sequence.new
+message    = Message.new
+sequence   = Sequence.new
+stopwatch  = Stopwatch.new
+turn       = Turn.new(['r','r', 'r', 'r'])
 
 puts mastermind.message.welcome
 puts mastermind.message.welcome_query
-mastermind.menu_flow(gets.chomp)
+mastermind.menu_flow(gets.chomp.downcase)
 
-# puts message.instructions
-# puts message.too_long
-# puts message.too_short
-# puts message.invalid_character
-
-
-
-# gets.chomp
-
-
-
-
-  #if what we define as "the code" is too long
-  #return 'this guess is too long.'
-  #elsif what we define as "the code" is too short
-  #return 'this guess is too short.'
-  #elsif the code uses characters that are not exactly q, i, c, r, b, g, or y
-  #return 'this is an invalid character.'
+mastermind.game_flow(gets.chomp.downcase)

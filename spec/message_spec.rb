@@ -68,15 +68,10 @@ RSpec.describe Message do
       expect(message.cheater).to eq("Well, alright. Here's the super secret sequence:")
     end
 
-    it '#can display a message when the user has won' do
-      message = Message.new
-
-      expect(message.you_won).to be_an_instance_of(String)
-    end
-
     it '#can display a query message when the player has won' do
       message = Message.new
 
+      expect(message.you_won_query).to eq("Would you like to (p)lay again or (q)uit?")
     end
   end
 end

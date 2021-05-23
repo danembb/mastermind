@@ -2,21 +2,18 @@ require './lib/game'
 require './lib/message'
 require './lib/sequence'
 require './lib/turn'
+require './lib/stopwatch'
 
 mastermind = Game.new
-# sequence   = Sequence.new
+sequence   = Sequence.new
+stopwatch  = Stopwatch.new
 
 puts mastermind.message.welcome
 puts mastermind.message.welcome_query
 mastermind.menu_flow(gets.chomp.downcase)
 
-# mastermind.game_flow(gets.chomp.downcase)
+mastermind.game_flow(gets.chomp.downcase)
 
-
-
-  #if what we define as "the code" is too long
-  #return 'this guess is too long.'
-  #elsif what we define as "the code" is too short
-  #return 'this guess is too short.'
-  #elsif the code uses characters that are not exactly q, i, c, r, b, g, or y
-  #return 'this is an invalid character.'
+#We dont want to include "requires" on the message class file
+#so is it okay if we have this one puts line here? 
+puts "Congratulations you guessed the sequence #{sequence.supersecretcode} in #{turn.turn_number} turns over #{stopwatch.elapsed_minutes} minutes, #{stopwatch.elapsed_seconds} seconds."

@@ -78,14 +78,16 @@ class Game
   end
 
   def end_game_flow(input)
-    puts "Congratulations you guessed the sequence #{@sequence.supersecretcode} in #{@turn.turn_number} turns over #{@stopwatch.elapsed_minutes} minutes, #{@stopwatch.elapsed_seconds} seconds."
-    puts @message.you_won_query
-      if input == "p" || input == "play"
-        self.game_flow(input = gets.chomp.downcase)
-      elsif input == "q" || input == "quit"
-        puts @message.goodbye
-      else
-        "I do not know what that means!"
-      end
+    # puts "Congratulations you guessed the sequence #{@sequence.supersecretcode} in #{@turn.turn_number} turns over #{@stopwatch.elapsed_minutes} minutes, #{@stopwatch.elapsed_seconds} seconds."
+    # puts @message.you_won_query
+    if input == "p" || input == "play"
+      puts @message.play_flow
+      self.game_flow(input = gets.chomp.downcase)
+    elsif input == "q" || input == "quit"
+      puts @message.goodbye
+    else
+      puts @message.end_game_error
+      self.end_game_flow(input = gets.chomp.downcase)
+    end
   end
 end

@@ -13,7 +13,7 @@ class Sequence
     end
   end
 
-  def display_cheat
+  def display_code
     @supersecretcode.join("")
   end
 

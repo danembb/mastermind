@@ -52,7 +52,7 @@ class Game
     #how can we create helper methods for each of these input.length..chomp.downcase)?
     if input == "c" || input == "cheat"
       puts @message.cheater
-      puts @sequence.display_cheat
+      puts @sequence.display_code
       self.game_flow(input = gets.chomp.downcase)
     elsif input == "q" || input == "quit"
       puts @message.goodbye
@@ -65,17 +65,22 @@ class Game
     #Sat: What is @sequence.supersecretcode here and why (when input correctly) isn't it congratulating?
     elsif input.length == 4
       @turn.add_turn
-      puts "we are here"
+      puts "we are on #{@turn.turn_number}"
       # puts @sequence.supersecretcode
-      if input == @sequence.display_cheat
+      if input == @sequence.display_code
         puts "I am a banana"
-        puts "Congratulations you guessed the sequence #{@sequence.display_cheat} in #{@turn.turn_number} turns over #{@stopwatch.elapsed_minutes} minutes, #{@stopwatch.elapsed_seconds} seconds."
+        puts "Congratulations you guessed the sequence #{@sequence.display_code} in #{@turn.turn_number} turns over #{@stopwatch.elapsed_minutes} minutes, #{@stopwatch.elapsed_seconds} seconds."
         puts @message.you_won_query
         self.end_game_flow(input = gets.chomp.downcase)
         #Should this message be here or can it be in the message class
         #If in the message class, then is it ok to require multiple files from there?
 
+        #if input != @sequence.display_code
+          #then message.partial_correct: "#{input} has #{correct_elements} with #{correct_positions} in the correct positions."
+        #elsif true
+          #then "congrats"
         # elsif has any amount of correct_positions
+        
         #   message.partial_correct: "#{input} has #{correct_elements} with #{correct_positions} in the correct positions."
         #   puts "You've taken #{@turn.turn_number} turns."
       end

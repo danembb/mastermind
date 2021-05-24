@@ -22,14 +22,14 @@ RSpec.describe Sequence do
       sequence = Sequence.new
       sequence.create
 
-      expect(sequence.display_cheat).to be_an_instance_of(String)
+      expect(sequence.display_code).to be_an_instance_of(String)
     end
 
     it 'can clear the sequence' do
       sequence = Sequence.new
       sequence.create
       sequence.refresh
-      
+
       expect(sequence.supersecretcode).to eq([])
     end
   end

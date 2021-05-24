@@ -25,7 +25,7 @@ RSpec.describe Turn do
       expect(turn.turn_number).to eq(1)
       turn.add_turn
       turn.add_turn
-      
+
       expect(turn.turn_number).to eq(3)
     end
 

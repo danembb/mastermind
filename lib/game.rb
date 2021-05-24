@@ -65,11 +65,16 @@ class Game
     #Sat: What is @sequence.supersecretcode here and why (when input correctly) isn't it congratulating?
     elsif input.length == 4
       @turn.add_turn
-      puts "I am a banana"
-      if input == @sequence.supersecretcode
+      puts "we are here"
+      # puts @sequence.supersecretcode
+      if input == @sequence.display_cheat
+        puts "I am a banana"
+        puts "Congratulations you guessed the sequence #{@sequence.display_cheat} in #{@turn.turn_number} turns over #{@stopwatch.elapsed_minutes} minutes, #{@stopwatch.elapsed_seconds} seconds."
+        puts @message.you_won_query
+        self.end_game_flow(input = gets.chomp.downcase)
         #Should this message be here or can it be in the message class
         #If in the message class, then is it ok to require multiple files from there?
-        puts "Congratulations you guessed the sequence #{@sequence.supersecretcode} in #{@turn.turn_number} turns over #{@stopwatch.elapsed_minutes} minutes, #{@stopwatch.elapsed_seconds} seconds."
+
         # elsif has any amount of correct_positions
         #   message.partial_correct: "#{input} has #{correct_elements} with #{correct_positions} in the correct positions."
         #   puts "You've taken #{@turn.turn_number} turns."
@@ -78,8 +83,6 @@ class Game
   end
 
   def end_game_flow(input)
-    # puts "Congratulations you guessed the sequence #{@sequence.supersecretcode} in #{@turn.turn_number} turns over #{@stopwatch.elapsed_minutes} minutes, #{@stopwatch.elapsed_seconds} seconds."
-    # puts @message.you_won_query
     if input == "p" || input == "play"
       puts @message.play_flow
       self.game_flow(input = gets.chomp.downcase)

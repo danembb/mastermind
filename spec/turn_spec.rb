@@ -11,14 +11,14 @@ RSpec.describe Turn do
     end
   end
 
-  describe '#methods' do
-    it '#count turns' do
+  describe 'methods' do
+    it 'count turns' do
       turn = Turn.new(['r','r', 'g', 'y'])
 
       expect(turn.turn_number).to eq(0)
     end
 
-    it '#can add a turn' do
+    it 'can add a turn' do
       turn = Turn.new(['r','r', 'g', 'y'])
       turn.add_turn
 
@@ -29,7 +29,7 @@ RSpec.describe Turn do
       expect(turn.turn_number).to eq(3)
     end
 
-    it '#has not won' do
+    it 'has not won' do
       sequence = Sequence.new
       sequence.create
       turn = Turn.new(['r','r', 'g', 'y'])
@@ -38,7 +38,7 @@ RSpec.describe Turn do
     end
     #can we use a mock instance?
     # @supersecretcode = ['r', 'r', 'r', 'r']
-    it '#does not have the correct first position' do
+    it 'does not have the correct first position' do
       sequence = Sequence.new
       turn = Turn.new(['r','r', 'g', 'y'])
       sequence.create

@@ -7,15 +7,16 @@ class Game
   attr_reader :message,
               :sequence,
               :turn,
-              :stopwatch
-              # :user
+              :stopwatch,
+              :correct
 
   def initialize
-    @message  = Message.new
-    @sequence = Sequence.new
-    @turn = Turn.new(['r','r', 'r', 'r'])
-    @stopwatch = Stopwatch.new
-    # @user     = gets.chomp
+    @message    = Message.new
+    @sequence   = Sequence.new
+    @turn       = Turn.new(['r','r', 'r', 'r'])
+    @stopwatch  = Stopwatch.new
+    @correct    = 0
+
   end
 
   def menu_flow(input)
@@ -80,7 +81,7 @@ class Game
         #elsif true
           #then "congrats"
         # elsif has any amount of correct_positions
-        
+
         #   message.partial_correct: "#{input} has #{correct_elements} with #{correct_positions} in the correct positions."
         #   puts "You've taken #{@turn.turn_number} turns."
       end
@@ -98,4 +99,24 @@ class Game
       self.end_game_flow(input = gets.chomp.downcase)
     end
   end
+
+  def guess_convert(input) #convert into array
+    input.split("")
+  end
+
+  # def correct_positions(input)     #index only works on array so how can we convert input into an array?
+  #   if self.guess_convert[0] == @sequence.supersecretcode[0]
+  #     @correct += 1
+  #   end
+  #   if self.guess_convert[1] == @sequence.supersecretcode[1]
+  #     @correct += 1
+  #   end
+  #   if self.guess_convert[2] == @sequence.supersecretcode[2]
+  #     @correct += 1
+  #   end
+  #   if self.guess_convert[3] == @sequence.supersecretcode[3]
+  #     @correct += 1
+  #   end
+  #   return @correct
+  # end
 end

@@ -10,7 +10,7 @@ RSpec.describe Sequence do
     end
   end
 
-  describe '#methods' do
+  describe 'methods' do
     it 'generates a code' do
       sequence = Sequence.new
 

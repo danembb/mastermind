@@ -20,11 +20,8 @@ class Game
   end
 
   def menu_flow(input)
-    #why does '' give a warning, but "" doesnt?
-    #why use self?
     if input == "p" || input == "play"
       @sequence.create
-      #Sat: is this starting the timer here or is the timer starting when the game is initiated?
       @stopwatch.start
       puts @message.play_flow
       self.game_flow(input = gets.chomp.downcase)
@@ -55,7 +52,7 @@ class Game
       puts @message.cheater
       puts @sequence.display_code
       self.game_flow(input = gets.chomp.downcase)
-    elsif input == "q" || input == "quit"
+    elsif input == "q" || input == "quit"  #We have to run the quit command twice to exit
       puts @message.goodbye
     elsif input.length  >= 5
       puts @message.too_long
@@ -63,27 +60,22 @@ class Game
     elsif input.length <= 3
       puts @message.too_short
       self.game_flow(input = gets.chomp.downcase)
-    #Sat: What is @sequence.supersecretcode here and why (when input correctly) isn't it congratulating?
     elsif input.length == 4
       @turn.add_turn
-      puts "we are on #{@turn.turn_number}"
-      # puts @sequence.supersecretcode
       if input == @sequence.display_code
-        puts "I am a banana"
         puts "Congratulations you guessed the sequence #{@sequence.display_code} in #{@turn.turn_number} turns over #{@stopwatch.elapsed_minutes} minutes, #{@stopwatch.elapsed_seconds} seconds."
         puts @message.you_won_query
         self.end_game_flow(input = gets.chomp.downcase)
         #Should this message be here or can it be in the message class
         #If in the message class, then is it ok to require multiple files from there?
 
-        #if input != @sequence.display_code
-          #then message.partial_correct: "#{input} has #{correct_elements} with #{correct_positions} in the correct positions."
-        #elsif true
-          #then "congrats"
-        # elsif has any amount of correct_positions
-
-        #   message.partial_correct: "#{input} has #{correct_elements} with #{correct_positions} in the correct positions."
-        #   puts "You've taken #{@turn.turn_number} turns."
+      elsif input != @sequence.display_code
+        self.correct_positions(input)
+        ##{correct_elements} = monkey
+        puts "#{input} has monkey with #{@correct} in the correct positions."
+        puts "You've taken #{@turn.turn_number} turns."
+        @correct = 0
+        self.game_flow(input = gets.chomp.downcase)
       end
     end
   end
@@ -104,19 +96,19 @@ class Game
     input.split("")
   end
 
-  # def correct_positions(input)     #index only works on array so how can we convert input into an array?
-  #   if self.guess_convert[0] == @sequence.supersecretcode[0]
-  #     @correct += 1
-  #   end
-  #   if self.guess_convert[1] == @sequence.supersecretcode[1]
-  #     @correct += 1
-  #   end
-  #   if self.guess_convert[2] == @sequence.supersecretcode[2]
-  #     @correct += 1
-  #   end
-  #   if self.guess_convert[3] == @sequence.supersecretcode[3]
-  #     @correct += 1
-  #   end
-  #   return @correct
-  # end
+  def correct_positions(input)     #index only works on array so how can we convert input into an array?
+    if self.guess_convert(input)[0] == @sequence.supersecretcode[0]
+      @correct += 1
+    end
+    if self.guess_convert(input)[1] == @sequence.supersecretcode[1]
+      @correct += 1
+    end
+    if self.guess_convert(input)[2] == @sequence.supersecretcode[2]
+      @correct += 1
+    end
+    if self.guess_convert(input)[3] == @sequence.supersecretcode[3]
+      @correct += 1
+    end
+    return @correct
+  end
 end

@@ -65,4 +65,8 @@ class Message
   def you_won_query
     "Would you like to (p)lay again or (q)uit?"
   end
+
+  def end_game_error
+    "I do not know what that means! Please enter (p)lay or (q)uit."
+  end
 end

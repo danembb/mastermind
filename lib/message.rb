@@ -7,7 +7,7 @@ class Message
 
   def initialize
     # @sequence = Sequence.new
-    # # @turn = Turn.new(['r','r', 'r', 'r'])
+    # @turn = Turn.new(['r','r', 'r', 'r'])
     # @stopwatch = Stopwatch.new
   end
 
@@ -40,8 +40,12 @@ class Message
     'Oh no! You did not use enough characters!'
   end
 
-  def invalid_character
+  def menu_invalid_character
     'Huh? That does not look like a valid character...'
+  end
+
+  def game_invalid_character
+    'Hey, those characters dont look like any code I have seen before...'
   end
 
   def play_flow

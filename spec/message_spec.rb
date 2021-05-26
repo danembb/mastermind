@@ -42,10 +42,16 @@ RSpec.describe Message do
       expect(message.too_short).to eq('Oh no! You did not use enough characters!')
     end
 
-    it 'can display an error message when an invalid character is used' do
+    it 'can display an error message when an invalid character is used in-menu' do
       message = Message.new
 
-      expect(message.invalid_character).to eq('Huh? That does not look like a valid character...')
+      expect(message.menu_invalid_character).to eq('Huh? That does not look like a valid character...')
+    end
+
+    it 'can display an error message when invalid characters are used in-game' do
+      message = Message.new
+
+      expect(message.game_invalid_character).to eq('Hey, those characters dont look like any code I have seen before...')
     end
 
     it 'can display play_flow_message' do

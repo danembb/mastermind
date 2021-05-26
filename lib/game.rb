@@ -8,15 +8,14 @@ class Game
               :sequence,
               :turn,
               :stopwatch,
-              :correct
+              :positions
 
   def initialize
     @message    = Message.new
     @sequence   = Sequence.new
     @turn       = Turn.new(['r','r', 'r', 'r'])
     @stopwatch  = Stopwatch.new
-    @correct    = 0
-
+    @positions  = 0
   end
 
   def menu_flow(input)
@@ -31,28 +30,18 @@ class Game
     elsif input == "q" || input == "quit"
       puts @message.goodbye
     elsif input != "q" || input != "i" || input != "r" || input != "b" || input != "g" || input != "y"
-      puts @message.invalid_character
+      puts @message.menu_invalid_character
       puts @message.instructions
       self.menu_flow(input = gets.chomp.downcase)
     end
-    #Rock input: consider def .loop until valid? (not a boolean)
-    # can we use a loop like:
-    # until input.valid? do
-    #   self.menu_flow(input = gets.chomp)
-    # def valid?
-    #   input == "p" || input == "play" || input == "i" || input == "instructions" || input == "q" || input == "quit"
-    # end
   end
 
   def game_flow(input)
-    # until self.guess_correct? == true do
-    # until input == sequence.supersecretcode do
-    #how can we create helper methods for each of these input.length..chomp.downcase)?
     if input == "c" || input == "cheat"
       puts @message.cheater
       puts @sequence.display_code
       self.game_flow(input = gets.chomp.downcase)
-    elsif input == "q" || input == "quit"  #We have to run the quit command twice to exit
+    elsif input == "q" || input == "quit"
       puts @message.goodbye
     elsif input.length  >= 5
       puts @message.too_long
@@ -61,20 +50,21 @@ class Game
       puts @message.too_short
       self.game_flow(input = gets.chomp.downcase)
     elsif input.length == 4
-      @turn.add_turn
       if input == @sequence.display_code
-        puts "Congratulations you guessed the sequence #{@sequence.display_code} in #{@turn.turn_number} turns over #{@stopwatch.elapsed_minutes} minutes, #{@stopwatch.elapsed_seconds} seconds."
+        @turn.add_turn
+        puts @message.you_won(@sequence, @turn, @stopwatch)
         puts @message.you_won_query
         self.end_game_flow(input = gets.chomp.downcase)
-        #Should this message be here or can it be in the message class
-        #If in the message class, then is it ok to require multiple files from there?
-
+      #Tues: Trying to implement invalid game characters error message. DELETE BEFORE SUBMISSION
+      # elsif input != @sequence.display_code && self.guess_convert(input).include?("r" || "b" || "y" || "g") #!= "r" || input != "b" || input != "y" || input != "g" || input != "q" || input != "c"
+      #   puts @message.game_invalid_character
+      #   self.game_flow(input = gets.chomp.downcase)
       elsif input != @sequence.display_code
+        @turn.add_turn
         self.correct_positions(input)
-        ##{correct_elements} = monkey
-        puts "#{input} has monkey with #{@correct} in the correct positions."
-        puts "You've taken #{@turn.turn_number} turns."
-        @correct = 0
+        puts "#{input} has #{correct_elements(input)} correct elements with #{positions} in the correct positions."
+        puts "You've taken #{turn.turn_number} turns."
+        @positions = 0
         self.game_flow(input = gets.chomp.downcase)
       end
     end
@@ -82,6 +72,9 @@ class Game
 
   def end_game_flow(input)
     if input == "p" || input == "play"
+      @sequence.refresh
+      @turn.turn_refresh
+      @sequence.create
       puts @message.play_flow
       self.game_flow(input = gets.chomp.downcase)
     elsif input == "q" || input == "quit"
@@ -92,23 +85,27 @@ class Game
     end
   end
 
-  def guess_convert(input) #convert into array
+  def guess_convert(input)
     input.split("")
   end
 
-  def correct_positions(input)     #index only works on array so how can we convert input into an array?
+  def correct_positions(input)
     if self.guess_convert(input)[0] == @sequence.supersecretcode[0]
-      @correct += 1
+      @positions += 1
     end
     if self.guess_convert(input)[1] == @sequence.supersecretcode[1]
-      @correct += 1
+      @positions += 1
     end
     if self.guess_convert(input)[2] == @sequence.supersecretcode[2]
-      @correct += 1
+      @positions += 1
     end
     if self.guess_convert(input)[3] == @sequence.supersecretcode[3]
-      @correct += 1
+      @positions += 1
     end
-    return @correct
+    return @positions
+  end
+
+  def correct_elements(input)
+    4 - @sequence.supersecretcode.difference(self.guess_convert(input)).count
   end
 end

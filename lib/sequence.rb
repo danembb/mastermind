@@ -4,9 +4,10 @@ class Sequence
   def initialize
     @supersecretcode = []
   end
-  #do we need something to restrict its size
+
   def create
     @colors = ['r', 'r', 'r', 'r', 'g', 'g', 'g', 'g', 'b', 'b', 'b', 'b', 'y', 'y', 'y', 'y']
+    #DELETE BEFORE SUBMISSION
     # 4.times { @supersecretcode << colors.sample }
     @colors.sample(4).each do |color|
       @supersecretcode << color

@@ -29,21 +29,13 @@ RSpec.describe Turn do
       expect(turn.turn_number).to eq(3)
     end
 
-    it 'has not won' do
-      sequence = Sequence.new
-      sequence.create
-      turn = Turn.new(['r','r', 'g', 'y'])
-
-      expect(turn.has_won?).to eq(false)
-    end
-
-    it 'does not have the correct first position' do
+    it 'can refresh the turn number for a new game' do
       sequence = Sequence.new
       turn = Turn.new(['r','r', 'g', 'y'])
       sequence.create
+      turn.turn_refresh
 
-      expect(turn.compare_first_position).to eq(false)
+      expect(turn.turn_number).to eq(0)
     end
-
   end
 end

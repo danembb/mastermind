@@ -37,7 +37,6 @@ class Game
   end
 
   def game_flow(input)
-    #how can we create helper methods for each of these input.length..chomp.downcase)?
     if input == "c" || input == "cheat"
       puts @message.cheater
       puts @sequence.display_code
@@ -56,14 +55,15 @@ class Game
         puts @message.you_won(@sequence, @turn, @stopwatch)
         puts @message.you_won_query
         self.end_game_flow(input = gets.chomp.downcase)
+      #Tues: Trying to implement invalid game characters error message. DELETE BEFORE SUBMISSION
       # elsif input != @sequence.display_code && self.guess_convert(input).include?("r" || "b" || "y" || "g") #!= "r" || input != "b" || input != "y" || input != "g" || input != "q" || input != "c"
       #   puts @message.game_invalid_character
       #   self.game_flow(input = gets.chomp.downcase)
       elsif input != @sequence.display_code
         @turn.add_turn
         self.correct_positions(input)
-        puts "#{input} has #{self.correct_elements(input)} correct elements with #{@positions} in the correct positions."
-        puts "You've taken #{@turn.turn_number} turns."
+        puts "#{input} has #{correct_elements(input)} correct elements with #{positions} in the correct positions."
+        puts "You've taken #{turn.turn_number} turns."
         @positions = 0
         self.game_flow(input = gets.chomp.downcase)
       end

@@ -1,4 +1,7 @@
 require './lib/message'
+require './lib/turn'
+require './lib/stopwatch'
+require './lib/sequence'
 
 RSpec.describe Message do
   describe 'instantiation' do
@@ -25,7 +28,7 @@ RSpec.describe Message do
     it 'can display instructions' do
       message = Message.new
 
-      expected = "Goal: Correctly guess the codemaker's code.\n    The codemaker will generate a 4-character code sequence.\n    It is up to you to guess the correct sequence by inputting the correct colors (red, green, blue and yellow) in the correct order.\n    These colors are implemented in-game with the characters in the following chart (case-insensitive):\n    Red = 'r'\n    Green = 'g'\n    Blue = 'b'\n    Yellow = 'y'\n    Enter (p)lay to play the game or (q)uit to quit!"
+      expected = "Goal: Correctly guess the codemaker's code.\n    The codemaker will generate a 4-character code sequence.\n    It is up to you to guess the correct sequence by inputting the correct colors (red, green, blue and yellow) in the correct order.\n    These colors are implemented in-game with the characters in the following chart (case-insensitive):\n    Red = 'r'\n    Green = 'g'\n    Blue = 'b'\n    Yellow = 'y'\n    You may be able to (c)heat while playing, too. But what fun is that?\n    Enter (p)lay to play the game or (q)uit to quit!"
 
       expect(message.instructions).to eq(expected)
     end
@@ -61,25 +64,25 @@ RSpec.describe Message do
       expect(message.play_flow).to eq(expected)
     end
 
-    it 'can display a goodbye message when player quits' do
+    it 'can display a goodbye message when user quits' do
       message = Message.new
 
       expect(message.goodbye).to eq("Goodbye!")
     end
 
-    it 'can display a message if the player wants to be a dirty cheater' do
+    it 'can display a message if the user wants to be a dirty cheater' do
       message = Message.new
 
       expect(message.cheater).to eq("Well, alright. Here's the super secret sequence:")
     end
 
-    it 'can display a query message when the player has won' do
+    it 'can display a query message when the user has won' do
       message = Message.new
 
       expect(message.you_won_query).to eq("Would you like to (p)lay again or (q)uit?")
     end
 
-    it 'can display an error when there is incorrect input' do
+    it 'can display an error when there is incorrect input at end of game' do
       message = Message.new
 
       expect(message.end_game_error).to eq("I do not know what that means! Please enter (p)lay or (q)uit.")

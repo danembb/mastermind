@@ -1,16 +1,6 @@
-# require './lib/sequence'
-# require './lib/turn'
-# require './lib/stopwatch'
 
 class Message
-  # attr_reader :sequence,
-  #             :turn,
-  #             :stopwatch
-
   def initialize
-    # @sequence = Sequence.new
-    # @turn = Turn.new(['r','r', 'r', 'r'])
-    # @stopwatch = Stopwatch.new
   end
 
   def welcome
@@ -30,8 +20,8 @@ class Message
     Green = 'g'
     Blue = 'b'
     Yellow = 'y'
+    You may be able to (c)heat while playing, too. But what fun is that?
     Enter (p)lay to play the game or (q)uit to quit!"
-#add a line about cheating.
   end
 
   def too_long
@@ -63,6 +53,12 @@ class Message
   def cheater
     "Well, alright. Here's the super secret sequence:"
   end
+
+  #DELETE BEFORE SUBMISSION
+  # def partial_correct_feedback(input, correct_elements, turn)
+  #   "#{input} has #{correct_elements(input)} correct elements with #{positions} in the correct positions.
+  #   You've taken #{turn.turn_number} turns."
+  # end
 
   def you_won(sequence, turn, stopwatch)
     "Congratulations you guessed the sequence #{sequence.display_code} in #{turn.turn_number} turns over #{stopwatch.elapsed_minutes} minutes, #{stopwatch.elapsed_seconds} seconds."

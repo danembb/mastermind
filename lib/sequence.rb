@@ -6,12 +6,8 @@ class Sequence
   end
 
   def create
-    @colors = ['r', 'r', 'r', 'r', 'g', 'g', 'g', 'g', 'b', 'b', 'b', 'b', 'y', 'y', 'y', 'y']
-    #DELETE BEFORE SUBMISSION
-    # 4.times { @supersecretcode << colors.sample }
-    @colors.sample(4).each do |color|
-      @supersecretcode << color
-    end
+    colors = ['r', 'b', 'g', 'y']
+    4.times {@supersecretcode << colors.sample}
   end
 
   def display_code

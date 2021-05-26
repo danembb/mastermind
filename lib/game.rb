@@ -106,6 +106,14 @@ class Game
   end
 
   def correct_elements(input)
-    4 - @sequence.supersecretcode.difference(self.guess_convert(input)).count
+    @elements = 0
+    local_supersecretcode = @sequence.supersecretcode.dup
+    self.guess_convert(input).each do |element|
+      if local_supersecretcode.include? element
+        @elements += 1
+        local_supersecretcode.delete_at(local_supersecretcode.index(element))
+      end
+    end
+    @elements
   end
 end

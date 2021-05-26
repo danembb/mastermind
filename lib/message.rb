@@ -4,11 +4,9 @@ class Message
   end
 
   def welcome
-    'Welcome to MASTERMIND'
-  end
-
-  def welcome_query
-    'Would you like to (p)lay, read the (i)nstructions, or (q)uit?'
+    'Welcome to MASTERMIND
+    
+    Would you like to (p)lay, read the (i)nstructions, or (q)uit?'
   end
 
   def instructions
@@ -53,12 +51,6 @@ class Message
   def cheater
     "Well, alright. Here's the super secret sequence:"
   end
-
-  #DELETE BEFORE SUBMISSION
-  # def partial_correct_feedback(input, correct_elements, turn)
-  #   "#{input} has #{correct_elements(input)} correct elements with #{positions} in the correct positions.
-  #   You've taken #{turn.turn_number} turns."
-  # end
 
   def you_won(sequence, turn, stopwatch)
     "Congratulations you guessed the sequence #{sequence.display_code} in #{turn.turn_number} turns over #{stopwatch.elapsed_minutes} minutes, #{stopwatch.elapsed_seconds} seconds."

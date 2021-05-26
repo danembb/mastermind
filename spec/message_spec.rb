@@ -15,14 +15,8 @@ RSpec.describe Message do
   describe 'methods' do
     it 'can display a welcome message' do
       message = Message.new
-
-      expect(message.welcome).to eq('Welcome to MASTERMIND')
-    end
-
-    it 'can display a welcome query' do
-      message = Message.new
-
-      expect(message.welcome_query).to eq('Would you like to (p)lay, read the (i)nstructions, or (q)uit?')
+      expected = "Welcome to MASTERMIND\n    \n    Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+      expect(message.welcome).to eq(expected)
     end
 
     it 'can display instructions' do

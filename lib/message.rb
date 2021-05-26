@@ -3,7 +3,9 @@
 # require './lib/stopwatch'
 
 class Message
-  # attr_reader :sequence
+  # attr_reader :sequence,
+  #             :turn,
+  #             :stopwatch
 
   def initialize
     # @sequence = Sequence.new
@@ -62,9 +64,9 @@ class Message
     "Well, alright. Here's the super secret sequence:"
   end
 
-  # def you_won
-  #   "Congratulations you guessed the sequence #{sequence.supersecretcode} in #{turn.turn_number} turns over #{stopwatch.elapsed_minutes} minutes, #{stopwatch.elapsed_seconds} seconds."
-  # end
+  def you_won(sequence, turn, stopwatch)
+    "Congratulations you guessed the sequence #{sequence.display_code} in #{turn.turn_number} turns over #{stopwatch.elapsed_minutes} minutes, #{stopwatch.elapsed_seconds} seconds."
+  end
 
   def you_won_query
     "Would you like to (p)lay again or (q)uit?"

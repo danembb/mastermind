@@ -16,20 +16,7 @@ class Turn
     @turn_number += 1
   end
 
-  # def correct_positions(input)     #index only works on array so how can we convert input into an array?
-  #   correct = 0
-  # if guess[0] == supersecretcode[0]
-  #     correct += 1
-  #   end
-  #   if input[1] == supersecretcode[1]
-  #     correct += 1
-  #   end
-  #   if input[2] == supersecretcode[2]
-  #     correct += 1
-  #   end
-  #   if input[3] == supersecretcode[3]
-  #     correct += 1
-  #   end
-  #   return correct
-  # end
+  def turn_refresh
+    @turn_number = 0
+  end
 end

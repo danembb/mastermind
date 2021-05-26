@@ -34,18 +34,9 @@ class Game
       puts @message.instructions
       self.menu_flow(input = gets.chomp.downcase)
     end
-    #Rock input: consider def .loop until valid? (not a boolean)
-    # can we use a loop like:
-    # until input.valid? do
-    #   self.menu_flow(input = gets.chomp)
-    # def valid?
-    #   input == "p" || input == "play" || input == "i" || input == "instructions" || input == "q" || input == "quit"
-    # end
   end
 
   def game_flow(input)
-    # until self.guess_correct? == true do
-    # until input == sequence.supersecretcode do
     #how can we create helper methods for each of these input.length..chomp.downcase)?
     if input == "c" || input == "cheat"
       puts @message.cheater
@@ -62,12 +53,12 @@ class Game
     elsif input.length == 4
       if input == @sequence.display_code
         @turn.add_turn
-        #puts @message.you_won(@sequence, turn, )
-        puts "Congratulations you guessed the sequence #{@sequence.display_code} in #{@turn.turn_number} turns over #{@stopwatch.elapsed_minutes} minutes, #{@stopwatch.elapsed_seconds} seconds."
+        puts @message.you_won(@sequence, @turn, @stopwatch)
         puts @message.you_won_query
         self.end_game_flow(input = gets.chomp.downcase)
-      # elsif input != @sequence.display_code && input != "r" || input != "b" || input != "y" || input != "g"
-
+      # elsif input != @sequence.display_code && self.guess_convert(input).include?("r" || "b" || "y" || "g") #!= "r" || input != "b" || input != "y" || input != "g" || input != "q" || input != "c"
+      #   puts @message.game_invalid_character
+      #   self.game_flow(input = gets.chomp.downcase)
       elsif input != @sequence.display_code
         @turn.add_turn
         self.correct_positions(input)
@@ -82,6 +73,7 @@ class Game
   def end_game_flow(input)
     if input == "p" || input == "play"
       @sequence.refresh
+      @turn.turn_refresh
       @sequence.create
       puts @message.play_flow
       self.game_flow(input = gets.chomp.downcase)
@@ -93,11 +85,11 @@ class Game
     end
   end
 
-  def guess_convert(input) #convert into array
+  def guess_convert(input)
     input.split("")
   end
 
-  def correct_positions(input)     #index only works on array so how can we convert input into an array?
+  def correct_positions(input)
     if self.guess_convert(input)[0] == @sequence.supersecretcode[0]
       @positions += 1
     end

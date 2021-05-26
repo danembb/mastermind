@@ -79,7 +79,7 @@ RSpec.describe Message do
       expect(message.you_won_query).to eq("Would you like to (p)lay again or (q)uit?")
     end
 
-    it 'can display error when there is incorrect input' do
+    it 'can display an error when there is incorrect input' do
       message = Message.new
 
       expect(message.end_game_error).to eq("I do not know what that means! Please enter (p)lay or (q)uit.")

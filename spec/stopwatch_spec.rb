@@ -19,10 +19,6 @@ RSpec.describe Stopwatch do
 
       expect(stopwatch.elapsed_minutes).to be_an_instance_of(Integer)
       expect(stopwatch.elapsed_minutes).to eq(0)
-      #Sat: should we include this test for clarity?
-      # sleep(60)
-
-      #expect(stopwatch.elapsed_minutes).to eq(1)
     end
 
     it 'can display time lapsed in seconds' do

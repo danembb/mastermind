@@ -55,10 +55,6 @@ class Game
         puts @message.you_won(@sequence, @turn, @stopwatch)
         puts @message.you_won_query
         self.end_game_flow(input = gets.chomp.downcase)
-      #Tues: Trying to implement invalid game characters error message. DELETE BEFORE SUBMISSION
-      # elsif input != @sequence.display_code && self.guess_convert(input).include?("r" || "b" || "y" || "g") #!= "r" || input != "b" || input != "y" || input != "g" || input != "q" || input != "c"
-      #   puts @message.game_invalid_character
-      #   self.game_flow(input = gets.chomp.downcase)
       elsif input != @sequence.display_code
         @turn.add_turn
         self.correct_positions(input)
@@ -106,6 +102,14 @@ class Game
   end
 
   def correct_elements(input)
-    4 - @sequence.supersecretcode.difference(self.guess_convert(input)).count
+    @elements = 0
+    local_supersecretcode = @sequence.supersecretcode.dup
+    self.guess_convert(input).each do |element|
+      if local_supersecretcode.include? element
+        @elements += 1
+        local_supersecretcode.delete_at(local_supersecretcode.index(element))
+      end
+    end
+    @elements
   end
 end

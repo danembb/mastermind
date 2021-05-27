@@ -4,7 +4,8 @@ class Message
   end
 
   def welcome
-    'Welcome to MASTERMIND'
+    'Welcome to MASTERMIND
+    '
   end
 
   def welcome_query
@@ -12,8 +13,8 @@ class Message
   end
 
   def instructions
-    "Goal: Correctly guess the codemaker's code.
-    The codemaker will generate a 4-character code sequence.
+    "Goal: Correctly guess my code.
+    I will generate a 4-character code sequence.
     It is up to you to guess the correct sequence by inputting the correct colors (red, green, blue and yellow) in the correct order.
     These colors are implemented in-game with the characters in the following chart (case-insensitive):
     Red = 'r'
@@ -53,12 +54,6 @@ class Message
   def cheater
     "Well, alright. Here's the super secret sequence:"
   end
-
-  #DELETE BEFORE SUBMISSION
-  # def partial_correct_feedback(input, correct_elements, turn)
-  #   "#{input} has #{correct_elements(input)} correct elements with #{positions} in the correct positions.
-  #   You've taken #{turn.turn_number} turns."
-  # end
 
   def you_won(sequence, turn, stopwatch)
     "Congratulations you guessed the sequence #{sequence.display_code} in #{turn.turn_number} turns over #{stopwatch.elapsed_minutes} minutes, #{stopwatch.elapsed_seconds} seconds."

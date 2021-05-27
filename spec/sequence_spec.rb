@@ -13,9 +13,9 @@ RSpec.describe Sequence do
   describe 'methods' do
     it 'generates a code' do
       sequence = Sequence.new
+      sequence.create
 
-      expect(sequence.create).to be_an_instance_of(Array)
-      expect(sequence.create.length).to eq(4)
+      expect(sequence.supersecretcode.length).to eq(4)
     end
 
     it 'can display the super secret code' do
